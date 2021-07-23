@@ -1,16 +1,16 @@
 var express = require("express");
-var router = express.Router();
+var HTMLrouter = express.Router();
 
-// Home page route.
-router.get("/", function (req, res) {
-  res.send("Wiki home page");
+// Home page route
+router.get("/notes", function (req, res) {
+  res.send(path.join(__dirname, "./public/notes.html"));
 });
 
-// About page route.
-router.get("/about", function (req, res) {
-  res.send("About this wiki");
+// Wildcard page route!!
+router.get("/*", function (req, res) {
+  res.send(path.join(__dirname, "./public/notes.html"));
 });
 
-module.exports = router;
+module.exports = HTMLrouter;
 
-//starter code from mozilla TODO: rewrite!!
+//starter code from mozilla TODO: check if it works!!
