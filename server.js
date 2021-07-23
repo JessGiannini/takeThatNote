@@ -8,7 +8,8 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
+//CHANGED TO ROUTE.GET IN ROUTES FOLDER
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
@@ -27,20 +28,20 @@ app.post("/api/notes", (req, res) => {
       return;
     }
     var dataArr = JSON.parse(data);
-    console.log("req.body", req.body);
-    console.log("dataArr---11", dataArr);
+    //console.log("req.body", req.body);
+    //console.log("dataArr---11", dataArr);
     dataArr.push(req.body);
-    console.log("dataArr---22", dataArr);
+    //console.log("dataArr---22", dataArr);
 
     fs.writeFile(
       path.join(__dirname, "db/db.json"),
       JSON.stringify(dataArr),
       (err) => {
         if (err) {
-          console.error("heheheheheh", err);
+          // console.error("heheheheheh", err);
           return;
         } else {
-          console.log("writeFile good!!!!");
+          // console.log("writeFile good!!!!");
         }
       }
     );
